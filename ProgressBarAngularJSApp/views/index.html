@@ -35,7 +35,7 @@
         </div>
         <div  ng-repeat="bar in cacheBars" >
             <div class="progress">
-                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50"
+                <div class="progress-bar {{bar.cssClass}}" role="progressbar" aria-valuenow="50"
                 aria-valuemin="0" aria-valuemax="100" style="width:{{bar.currentWidth}}%">
                 {{bar.currentValue}}%
                 </div>

@@ -46,6 +46,7 @@ myApp.controller("progressBar",function($scope,$timeout,$http){
           $scope.cacheBars[i].currentValue=barVal;
          var  newwidth=Math.floor(((barVal*100)/$scope.data.limit));
          console.log("new width:"+newwidth);
+         $scope.cacheBars[i].cssClass=newwidth<=100?"progress-bar-info":"progress-bar-danger";
           $scope.cacheBars[i].currentWidth=newwidth;
           $scope.cacheBars[i].origValue=barVal;
         }
@@ -79,7 +80,9 @@ myApp.controller("progressBar",function($scope,$timeout,$http){
     //console.log("new width:"+newwidth);
     newwidth=Math.floor(((newwidth*100)/$scope.data.limit));
     //console.log("new width relative:"+newwidth);
-
+    var cssClass=(newwidth<=100?"progress-bar-info":"progress-bar-danger");
+     console.log("css class:"+cssClass);
+    cacheBar.cssClass=cssClass;
     newwidth=newwidth>=100?100:newwidth;
     //cacheBar.currentWidth=parseInt(newwidth);
     var end=newwidth;
@@ -94,6 +97,7 @@ myApp.controller("progressBar",function($scope,$timeout,$http){
 $scope.animateBarFillObj=function(barToAnimate,start,end,pixelIncrement){
 
   var newStart=start;
+  
   if(newStart>=0 && newStart<=100)
   {
     if(newStart!=end)
